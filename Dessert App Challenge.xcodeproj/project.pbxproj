@@ -14,6 +14,13 @@
 		051F09272AFD4EDF008406BF /* Dessert_App_ChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051F09262AFD4EDF008406BF /* Dessert_App_ChallengeTests.swift */; };
 		051F09312AFD4EDF008406BF /* Dessert_App_ChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051F09302AFD4EDF008406BF /* Dessert_App_ChallengeUITests.swift */; };
 		051F09332AFD4EDF008406BF /* Dessert_App_ChallengeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051F09322AFD4EDF008406BF /* Dessert_App_ChallengeUITestsLaunchTests.swift */; };
+		051F09412AFD646D008406BF /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051F09402AFD646D008406BF /* RequestBuilder.swift */; };
+		051F09442AFD68A1008406BF /* DessertCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051F09432AFD68A1008406BF /* DessertCodable.swift */; };
+		051F09462AFD6E16008406BF /* JSONLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051F09452AFD6E16008406BF /* JSONLoader.swift */; };
+		051F09482AFD7592008406BF /* DessertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051F09472AFD7592008406BF /* DessertManager.swift */; };
+		051F094B2AFD95DA008406BF /* ErrHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051F094A2AFD95DA008406BF /* ErrHandler.swift */; };
+		051F094F2AFE9DCF008406BF /* DessertListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051F094E2AFE9DCF008406BF /* DessertListRow.swift */; };
+		051F09512AFEBFC8008406BF /* DessertDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051F09502AFEBFC8008406BF /* DessertDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +51,13 @@
 		051F092C2AFD4EDF008406BF /* Dessert App ChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Dessert App ChallengeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		051F09302AFD4EDF008406BF /* Dessert_App_ChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dessert_App_ChallengeUITests.swift; sourceTree = "<group>"; };
 		051F09322AFD4EDF008406BF /* Dessert_App_ChallengeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dessert_App_ChallengeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		051F09402AFD646D008406BF /* RequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBuilder.swift; sourceTree = "<group>"; };
+		051F09432AFD68A1008406BF /* DessertCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertCodable.swift; sourceTree = "<group>"; };
+		051F09452AFD6E16008406BF /* JSONLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONLoader.swift; sourceTree = "<group>"; };
+		051F09472AFD7592008406BF /* DessertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertManager.swift; sourceTree = "<group>"; };
+		051F094A2AFD95DA008406BF /* ErrHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrHandler.swift; sourceTree = "<group>"; };
+		051F094E2AFE9DCF008406BF /* DessertListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertListRow.swift; sourceTree = "<group>"; };
+		051F09502AFEBFC8008406BF /* DessertDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +110,9 @@
 			children = (
 				051F09152AFD4EDE008406BF /* Dessert_App_ChallengeApp.swift */,
 				051F09172AFD4EDE008406BF /* ContentView.swift */,
+				051F09502AFEBFC8008406BF /* DessertDetailView.swift */,
+				051F094E2AFE9DCF008406BF /* DessertListRow.swift */,
+				051F09492AFD75A9008406BF /* Models */,
 				051F09192AFD4EDF008406BF /* Assets.xcassets */,
 				051F091B2AFD4EDF008406BF /* Preview Content */,
 			);
@@ -125,6 +142,34 @@
 				051F09322AFD4EDF008406BF /* Dessert_App_ChallengeUITestsLaunchTests.swift */,
 			);
 			path = "Dessert App ChallengeUITests";
+			sourceTree = "<group>";
+		};
+		051F093F2AFD644D008406BF /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				051F09472AFD7592008406BF /* DessertManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		051F09422AFD6844008406BF /* Codables */ = {
+			isa = PBXGroup;
+			children = (
+				051F09432AFD68A1008406BF /* DessertCodable.swift */,
+			);
+			path = Codables;
+			sourceTree = "<group>";
+		};
+		051F09492AFD75A9008406BF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				051F09422AFD6844008406BF /* Codables */,
+				051F093F2AFD644D008406BF /* Managers */,
+				051F094A2AFD95DA008406BF /* ErrHandler.swift */,
+				051F09452AFD6E16008406BF /* JSONLoader.swift */,
+				051F09402AFD646D008406BF /* RequestBuilder.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,8 +302,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				051F09462AFD6E16008406BF /* JSONLoader.swift in Sources */,
 				051F09182AFD4EDE008406BF /* ContentView.swift in Sources */,
+				051F09482AFD7592008406BF /* DessertManager.swift in Sources */,
+				051F09412AFD646D008406BF /* RequestBuilder.swift in Sources */,
 				051F09162AFD4EDE008406BF /* Dessert_App_ChallengeApp.swift in Sources */,
+				051F094F2AFE9DCF008406BF /* DessertListRow.swift in Sources */,
+				051F09442AFD68A1008406BF /* DessertCodable.swift in Sources */,
+				051F094B2AFD95DA008406BF /* ErrHandler.swift in Sources */,
+				051F09512AFEBFC8008406BF /* DessertDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

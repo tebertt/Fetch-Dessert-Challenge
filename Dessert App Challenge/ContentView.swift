@@ -8,14 +8,45 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var dessertList: [Dessert] = []
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationSplitView {
+            List(dessertList, id: \.self) { dessert in
+                NavigationLink {
+                    DessertDetailView(dessertID: dessert.id)
+                } label: {
+                    DessertListRow(dessert: dessert)
+                }
+            }
+                .toolbar {
+                    Button {
+                    } label: {
+                        Image(systemName: "arrow.clockwise")
+                    }
+                }
+            
+        } detail: {
+            Text("Hello")
         }
         .padding()
+        .task {
+            await doLoad()
+        }
+    }
+    
+    @Sendable func doLoad() async {
+        
+        let dessertManager = DessertManager()
+        
+        let dessertResult = await dessertManager.listDesserts()
+        switch dessertResult {
+            case .success(let desserts):
+                self.dessertList = desserts.meals
+            case .failure(let error):
+                print(error)
+        }
     }
 }
 
