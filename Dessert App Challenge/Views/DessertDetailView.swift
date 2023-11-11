@@ -20,10 +20,12 @@ struct DessertDetailView: View {
             }
             Section(header: Text("Ingredients")) {
                 ForEach(dessert.ingredients.sorted(by: <), id: \.key) { index, ingredient in
+                    if(dessert.measurements[index] != nil) {
                         HStack {
                             Text(ingredient)
                             Spacer()
                             Text(dessert.measurements[index]!)
+                        }
                     }
                 }
             }
