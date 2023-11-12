@@ -15,6 +15,7 @@ enum HTTPMethod: String {
     case DELETE
 }
 
+// Request object
 class RequestBuilder {
     private var request: URLRequest
     
@@ -26,6 +27,7 @@ class RequestBuilder {
         return request
     }
     
+    // Sets the http method, see enum above
     func setMethod(method: HTTPMethod) -> RequestBuilder {
         request.httpMethod = method.rawValue
         return self

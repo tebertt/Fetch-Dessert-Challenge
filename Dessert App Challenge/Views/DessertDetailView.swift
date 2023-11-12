@@ -36,6 +36,7 @@ struct DessertDetailView: View {
         }
     }
     
+    // Asynchronous function to load dessert's details
     @Sendable func doLoad() async {
         
         let dessertManager = DessertManager()

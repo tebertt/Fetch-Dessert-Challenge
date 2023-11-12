@@ -14,6 +14,7 @@ struct Dessert: Codable, Hashable {
     var id: String
 }
 
+// Coding keys
 extension Dessert {
     enum CodingKeys: String, CodingKey {
         case name = "strMeal"

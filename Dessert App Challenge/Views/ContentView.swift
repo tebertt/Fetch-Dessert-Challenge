@@ -12,46 +12,47 @@ struct ContentView: View {
     @State private var dessertList: [Dessert] = []
     
     var body: some View {
-                NavigationStack {
-                    List(dessertList, id: \.self) { dessert in
-                        NavigationLink {
-                            DessertDetailView(dessertID: dessert.id)
-                        } label: {
-                            DessertListRow(dessert: dessert)
-                        }
-                    }
-                    .navigationTitle("Desserts")
-                    .toolbar {
-                        Button {
-                            Task {
-                                await doLoad()
-                            }
-                        } label: {
-                            Image(systemName: "arrow.clockwise")
-                        }
-                    }
-                    .refreshable {
+        NavigationStack {
+            List(dessertList, id: \.self) { dessert in
+                NavigationLink {
+                    DessertDetailView(dessertID: dessert.id)
+                } label: {
+                    DessertListRow(dessert: dessert)
+                }
+            }
+            .navigationTitle("Desserts")
+            .toolbar {
+                Button {
+                    Task {
                         await doLoad()
                     }
-                }
-        
-                .task {
-                    await doLoad()
+                } label: {
+                    Image(systemName: "arrow.clockwise")
                 }
             }
-        
-            @Sendable func doLoad() async {
-        
-                let dessertManager = DessertManager()
-        
-                let dessertResult = await dessertManager.listDesserts()
-                switch dessertResult {
-                    case .success(let desserts):
-                        self.dessertList = desserts.meals
-                    case .failure(let error):
-                        print(error)
-                }
+            .refreshable {
+                await doLoad()
             }
+        }
+
+        .task {
+            await doLoad()
+        }
+    }
+
+    // Asynchronous function to load dessert list
+    @Sendable func doLoad() async {
+
+        let dessertManager = DessertManager()
+
+        let dessertResult = await dessertManager.listDesserts()
+        switch dessertResult {
+            case .success(let desserts):
+                self.dessertList = desserts.meals
+            case .failure(let error):
+                print(error)
+        }
+    }
 }
 
 #Preview {
