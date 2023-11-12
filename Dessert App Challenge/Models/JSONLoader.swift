@@ -9,7 +9,8 @@ import Foundation
 
 class JSONLoader {
     
-    private func decode<T: Codable>(data: Data) -> T? {
+    // Decode generalized JSON
+    func decode<T: Codable>(data: Data) -> T? {
         let decoder = JSONDecoder()
         var decodedValue: T?
 
@@ -30,21 +31,26 @@ class JSONLoader {
         return decodedValue
     }
     
+    // Handle requesst
     func doRequest<T: Codable>(request: RequestBuilder) async -> Result<T, Error> {
         
-        let task = URLSession.shared
+        // Send HTTP request
+        let sesh = URLSession.shared
         do {
-            let (data, urlResponse) = try await task.data(for: request.getRequest())
+            let (data, urlResponse) = try await sesh.data(for: request.getRequest())
             let response = urlResponse as! HTTPURLResponse
             
-            if (200...299).contains(response.statusCode) {
+            // If success
+            if 199 < response.statusCode || response.statusCode < 300  {
                 
                 guard let record: T = decode(data: data) else {
+                    // If failed to decode
                     return .failure(ServerError.requestFailure(message: "Failure to decode JSON"))
                 }
                 
                 return .success(record)
-                
+            
+            // If sends API failure
             } else {
                 
                 let errorString = String(data: data, encoding: .utf8) ?? "A parsing error occurred"
@@ -52,6 +58,7 @@ class JSONLoader {
                 
             }
         }
+        // Failed to get response from API
         catch let error as NSError {
             return .failure(ClientError.runtimeError(message: "\(error.localizedDescription)"))
         }

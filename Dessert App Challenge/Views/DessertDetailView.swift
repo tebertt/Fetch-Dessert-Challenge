@@ -30,6 +30,7 @@ struct DessertDetailView: View {
                 }
             }
         }
+        .navigationTitle(dessert.name)
         .task {
             await doLoad()
         }

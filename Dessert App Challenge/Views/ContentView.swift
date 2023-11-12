@@ -12,8 +12,7 @@ struct ContentView: View {
     @State private var dessertList: [Dessert] = []
     
     var body: some View {
-                NavigationView {
-        
+                NavigationStack {
                     List(dessertList, id: \.self) { dessert in
                         NavigationLink {
                             DessertDetailView(dessertID: dessert.id)
@@ -31,6 +30,9 @@ struct ContentView: View {
                             Image(systemName: "arrow.clockwise")
                         }
                     }
+                    .refreshable {
+                        await doLoad()
+                    }
                 }
         
                 .task {
@@ -39,7 +41,6 @@ struct ContentView: View {
             }
         
             @Sendable func doLoad() async {
-                print("Loading\n")
         
                 let dessertManager = DessertManager()
         
